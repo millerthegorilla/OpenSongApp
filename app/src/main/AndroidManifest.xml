@@ -1,21 +1,43 @@
 <?xml version="1.0" encoding="utf-8"?>
 <manifest xmlns:android="http://schemas.android.com/apk/res/android"
-    package="com.techyourchance.template" >
+    package="com.OpenSongApp.OpenSong_Core" >
 
     <application
-        android:name="com.techyourchance.template.MyApplication"
+        android:name="com.OpenSongApp.OpenSong_Core.OpenSong"
         android:allowBackup="false"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:theme="@style/AppTheme" >
         <activity
-            android:name="com.techyourchance.template.screens.example.activities.ExampleActivity"
+            android:name="com.OpenSongApp.OpenSong_Core.screens.example.activities.ExampleActivity"
             android:label="@string/app_name" >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
+            <!-- todo check that the below is correct -->
+            <intent-filter android:label="@string/filter_title_view_app">
+                <action android:name="android.intent.action.VIEW" />
+                <category android:name="android.intent.category.DEFAULT" />
+                <category android:name="android.intent.category.BROWSABLE" />
+                <!-- Accepts URIs that begin with "http://www.opensongapp.com/opensong” -->
+                <data android:scheme="http"
+                    android:host="www.opensongapp.com"
+                    android:pathPrefix="/opensong" />
+                <!-- note that the leading "/" is required for pathPrefix-->
+                <!-- Accepts URIs that begin with "opensongapp://opensong” -->
+                <data android:scheme="opensongapp"
+                    android:host="opensong" />
+
+            </intent-filter>
         </activity>
+        <service
+            android:name=".common.services.BaseService"
+            android:description="@string/base_description"
+            android:enabled="false"
+            android:exported="false"
+            android:isolatedProcess="true" >
+        </service>
     </application>
 
 </manifest>

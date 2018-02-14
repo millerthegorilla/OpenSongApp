@@ -1,39 +1,55 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdkVersion 25
-    buildToolsVersion "25.0.3"
-
+    compileSdkVersion 27
+    buildToolsVersion "27.0.3"
     defaultConfig {
-        applicationId "com.domain.appname"
-        minSdkVersion 15
-        targetSdkVersion 25
+        applicationId 'com.OpenSongApp'
+        minSdkVersion 16
+        targetSdkVersion 27
         versionCode 1
         versionName "1.0"
     }
-
     buildTypes {
         release {
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
+    productFlavors {
+    }
+    lintOptions {
+//        // Turns off checks for the issue IDs you specify.
+//        disable 'TypographyFractions','TypographyQuotes'
+//        // Turns on checks for the issue IDs you specify. These checks are in
+//        // addition to the default lint checks.
+//        enable 'RtlHardcoded', 'RtlCompat', 'RtlEnabled'
+//        // To enable checks for only a subset of issue IDs and ignore all others,
+//        // list the issue IDs with the 'check' property instead. This property overrides
+//        // any issue IDs you enable or disable using the properties above.
+//        check 'NewApi', 'InlinedApi'
+//        // If set to true, turns off analysis progress reporting by lint.
+//        quiet true
+//        // if set to true (default), stops the build if errors are found.
+//        abortOnError false
+//        // if true, only report errors.
+//        ignoreWarnings true
+    }
 }
 
 ext {
-    supportLibVersion = "25.3.1"
+    supportLibVersion = "27.0.2"
 }
 
 dependencies {
-    compile fileTree(dir: 'libs', include: ['*.jar'])
-
+    compile fileTree(include: ['*.jar'], dir: 'libs')
     compile "com.android.support:support-annotations:${supportLibVersion}"
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
-
     compile 'org.greenrobot:eventbus:3.0.0'
-
-
-    compile 'com.google.dagger:dagger:2.10'
-    annotationProcessor 'com.google.dagger:dagger-compiler:2.10'
-
+    compile 'com.google.dagger:dagger:2.14.1'
+    annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
 }

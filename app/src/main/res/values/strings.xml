@@ -1,6 +1,8 @@
 <resources>
-    <string name="app_name">Application Name</string>
-
+    <string name="app_name">OpenSongApp</string>
+    <string name="description">OpenSong - an app to present songs</string>
+    <string name="filter_title_view_app">google_filter</string>
+    <string name="base_description">Base class for services</string>
     <string name="show_dialog_button_caption">Show Dialog</string>
 
     <string name="dialog_title">Dialog Title</string>
