@@ -1,11 +1,19 @@
-# Android application template
+# _OpenSongApp_
 
-I noticed that all my application have much in common. In order to reduce a time it takes me to bootstrap a new Android applicaiton I created this template.
+## Rewrite of OpenSongApp
+A rewrite of OpenSongTablet but using an MVC architectural
+pattern, with decoupled oop classes, dependency injection,
+messaging and clean architecture. 
 
-You're invited to clone/fork this repository and use it as a template for your own great apps!
+Libaries used:
+* dagger2
+* eventbus
+* bungee
+* butterknife
+* and more
 
-# Features
-
-# License
-
-These binaries and source code can be used according to the [Apache License, Version 2.0](http://www.apache.org/licenses/LICENSE-2.0).
+The application template came from:
+https://github.com/techyourchance/android_application_template
+and are published according 
+to the [Apache License, Version 2.0]
+(http://www.apache.org/licenses/LICENSE-2.0).
