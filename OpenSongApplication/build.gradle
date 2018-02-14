@@ -1,5 +1,13 @@
 apply plugin: 'com.android.application'
-
+//apply plugin: 'checkstyle'
+//
+//preBuild.dependsOn('checkstyle')
+//assemble.dependsOn('lint')
+//check.dependsOn('checkstyle')
+//checkstyle {
+//    configFile = new File("${rootProject.rootDir}/checkstyle/checkstyle.xml")
+//    toolVersion = '8.8'
+//}
 android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"

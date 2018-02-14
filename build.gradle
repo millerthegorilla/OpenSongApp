@@ -20,9 +20,10 @@ allprojects {
         google()
     }
 
+    //task to enforce style guidelines
+    //http://www.technotalkative.com/checkstyle-enforce-coding-rules-and-styles-across-android-projects/
     task checkstyle(type: Checkstyle) {
-        showViolations = true
-        configFile file("../checkstyle/checkstyle.xml")
+        showViolations = false
 
         source 'src/main/java'
         include '**/*.java'
