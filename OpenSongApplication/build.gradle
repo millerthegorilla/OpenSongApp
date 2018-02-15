@@ -1,13 +1,15 @@
 apply plugin: 'com.android.application'
-//apply plugin: 'checkstyle'
-//
-//preBuild.dependsOn('checkstyle')
-//assemble.dependsOn('lint')
-//check.dependsOn('checkstyle')
-//checkstyle {
-//    configFile = new File("${rootProject.rootDir}/checkstyle/checkstyle.xml")
-//    toolVersion = '8.8'
-//}
+apply plugin: 'io.objectbox' // after applying Android plugin
+
+/*apply plugin: 'checkstyle'
+
+preBuild.dependsOn('checkstyle')
+assemble.dependsOn('lint')
+check.dependsOn('checkstyle')
+checkstyle {
+    configFile = new File("${rootProject.rootDir}/config/checkstyle/checkstyle.xml")
+    toolVersion = '8.8'
+}*/
 android {
     compileSdkVersion 27
     buildToolsVersion "27.0.3"
@@ -20,11 +22,15 @@ android {
     }
     buildTypes {
         release {
+            debuggable false
             minifyEnabled true
+            shrinkResources true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
         debug {
+            debuggable true
             minifyEnabled false
+            useProguard false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -46,6 +52,13 @@ android {
 //        abortOnError false
 //        // if true, only report errors.
 //        ignoreWarnings true
+        explainIssues true
+        htmlOutput new File("${rootProject.rootDir}/OpenSongApplication/build/reports/lint/lintreport.html")
+        htmlReport true
+        noLines false
+        //severityOverrides
+        //https://stackoverflow.com/questions/35360240/how-to-set-severityoverrides-in-lintoptions
+        lintConfig file("lint.xml")
     }
 }
 
@@ -54,10 +67,22 @@ ext {
 }
 
 dependencies {
+    //for custom libraries -- consider making library
+    //out of autoscroll textbox
     compile fileTree(include: ['*.jar'], dir: 'libs')
+    //android
     compile "com.android.support:support-annotations:${supportLibVersion}"
     compile "com.android.support:appcompat-v7:${supportLibVersion}"
+    //eventBus for messaging
     compile 'org.greenrobot:eventbus:3.0.0'
+    //dagger for dependency injection
     compile 'com.google.dagger:dagger:2.14.1'
     annotationProcessor 'com.google.dagger:dagger-compiler:2.13'
+    //butterKnife for view injection
+    compile 'com.jakewharton:butterknife:8.8.1'
+    annotationProcessor 'com.jakewharton:butterknife-compiler:8.8.1'
+    //timber for logging
+    implementation 'com.jakewharton.timber:timber:4.6.1'
+    //material design
+    compile 'com.github.navasmdc:MaterialDesign:1.5@aar'
 }
