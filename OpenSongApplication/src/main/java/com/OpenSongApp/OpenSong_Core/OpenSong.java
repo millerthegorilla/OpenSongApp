@@ -7,6 +7,8 @@ import com.OpenSongApp.OpenSong_Core.dependencyinjection.application.Application
 import com.OpenSongApp.OpenSong_Core.dependencyinjection.application.ApplicationModule;
 import com.OpenSongApp.OpenSong_Core.dependencyinjection.application.DaggerApplicationComponent;
 import com.OpenSongApp.OpenSong_Core.dependencyinjection.application.SettingsModule;
+import com.crashlytics.android.Crashlytics;
+import io.fabric.sdk.android.Fabric;
 
 public class OpenSong extends Application {
 
@@ -14,7 +16,11 @@ public class OpenSong extends Application {
 
     @Override
     public void onCreate() {
+
         super.onCreate();
+        if ( BuildConfig.FLAVOR == "crashlytics") {
+            Fabric.with( this, new Crashlytics() );
+        }
     }
 
     /**

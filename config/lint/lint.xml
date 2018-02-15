@@ -2,6 +2,6 @@
 <lint>
     <!-- list of issues to configure -->
     <issue id="all">
-        <ignore path="**/gui" />
+        <ignore path="/gui" />
     </issue>
 </lint>

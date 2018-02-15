@@ -28,8 +28,11 @@
                 <!-- Accepts URIs that begin with "opensongapp://opensong” -->
                 <data android:scheme="opensongapp"
                     android:host="opensong" />
-
             </intent-filter>
+            <meta-data
+                android:name="io.fabric.ApiKey"
+                android:value="60dca7c7a79ec365bdd39864c6733c5743ee8c39"
+                />
         </activity>
         <service
             android:name=".common.services.BaseService"
@@ -39,5 +42,5 @@
             android:isolatedProcess="true" >
         </service>
     </application>
-
+    <uses-permission android:name="android.permission.INTERNET" />
 </manifest>

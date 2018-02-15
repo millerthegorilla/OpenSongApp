@@ -7,6 +7,7 @@ buildscript {
         google()
         maven { url "http://objectbox.net/beta-repo/" }
     }
+
     dependencies {
         classpath 'com.android.tools.build:gradle:3.0.1'
         classpath "io.objectbox:objectbox-gradle-plugin:$objectboxVersion"
@@ -14,6 +15,21 @@ buildscript {
         // in the individual module build.gradle files
     }
 
+}
+
+buildscript {
+    repositories {
+        maven { url 'https://maven.fabric.io/public' }
+    }
+
+    dependencies {
+        // These docs use an open ended version so that our plugin
+        // can be updated quickly in response to Android tooling updates
+
+        // We recommend changing it to the latest version from our changelog:
+        // https://docs.fabric.io/android/changelog.html#fabric-gradle-plugin
+        classpath 'io.fabric.tools:gradle:1.25.1'
+    }
 }
 
 allprojects {
@@ -38,4 +54,9 @@ allprojects {
         classpath = files()
     }
 
+    gradle.projectsEvaluated {
+        tasks.withType(JavaCompile) {
+            options.compilerArgs << "-Xlint:unchecked" << "-Xlint:deprecation"
+        }
+    }
 }
